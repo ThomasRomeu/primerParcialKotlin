@@ -3,6 +3,7 @@ package com.example.primerparcial_thomasromeu
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -10,10 +11,19 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: Adapter
+    private lateinit var buttonToRegistroAlumno: Button
+
     private var userName: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        buttonToRegistroAlumno = findViewById(R.id.buttonToRegistro)
+
+        buttonToRegistroAlumno.setOnClickListener{
+            val intent = Intent(this, RegistroAlumno::class.java)
+            startActivity(intent)
+        }
 
         val preferences = getSharedPreferences("alumnoPref", MODE_PRIVATE)
         userName = preferences.getString("nombre", "")
