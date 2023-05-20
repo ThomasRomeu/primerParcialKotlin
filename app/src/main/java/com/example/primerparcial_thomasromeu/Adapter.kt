@@ -20,16 +20,16 @@ class Adapter (val context: Context) : ListAdapter<Alumno, Adapter.ViewHolder>(D
         private val imagenAlumno: ImageView = view.findViewById(R.id.imageViewAlumno)
 
 
-        fun bind (equipo: Alumno) {
-            nombre.text = equipo.nombre
+        fun bind (alumno: Alumno) {
+            nombre.text = alumno.nombre
 
 
             Glide.with(context)
-                .load(equipo.url)
+                .load(alumno.url)
                 .into(imagenAlumno)
 
             view.setOnClickListener {
-                onItemClickListener(equipo)
+                onItemClickListener(alumno)
             }
         }
     }
@@ -42,8 +42,8 @@ class Adapter (val context: Context) : ListAdapter<Alumno, Adapter.ViewHolder>(D
     }
 
     override fun onBindViewHolder(holder: Adapter.ViewHolder, position: Int) {
-        val equipo = getItem(position)
-        holder.bind(equipo)
+        val alumno = getItem(position)
+        holder.bind(alumno)
     }
 
     companion object DiffCallBack : DiffUtil.ItemCallback<Alumno>() {
